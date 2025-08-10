@@ -18,8 +18,8 @@ A simple backend REST API for user management, built with Node.js, Express.js, P
 ### Setup
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
-   cd <project-folder>
+   git clone https://github.com/Rahimeen-Altaf/User-CRUD.git
+   cd User-CRUD
    ```
 2. **Install dependencies:**
    ```bash
@@ -52,9 +52,7 @@ A simple backend REST API for user management, built with Node.js, Express.js, P
 
 5. **Start the server:**
    ```bash
-   npm run dev
-   # or
-   node app.js
+   npx nodemon app.js
    ```
 
 ## API Endpoints
