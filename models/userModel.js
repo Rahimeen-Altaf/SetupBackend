@@ -1,19 +1,35 @@
-const pool = require('../config/db');
+const User = require('./User');
 
 async function getAllUsers() {
-  const result = await pool.query('SELECT * FROM users');
-  return result.rows;
+  return await User.findAll();
 }
 
-async function createUser(name, email) {
-  const result = await pool.query(
-    'INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *',
-    [name, email]
-  );
-  return result.rows[0];
+async function getUserById(id) {
+  return await User.findByPk(id);
+}
+
+async function createUser(data) {
+  return await User.create(data);
+}
+
+async function updateUser(id, data) {
+  const user = await User.findByPk(id);
+  if (!user) return null;
+  await user.update(data);
+  return user;
+}
+
+async function deleteUser(id) {
+  const user = await User.findByPk(id);
+  if (!user) return null;
+  await user.destroy();
+  return user;
 }
 
 module.exports = {
   getAllUsers,
+  getUserById,
   createUser,
+  updateUser,
+  deleteUser,
 };
